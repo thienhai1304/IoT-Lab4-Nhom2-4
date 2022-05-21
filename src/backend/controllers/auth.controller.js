@@ -17,6 +17,7 @@ exports.signup = (req, res) => {
         password: bcrypt.hashSync(password, 8)
     })
     .then(user => {
+        console.log(user)
         res.json({
             user_id: user._id,
             username: user.username,
