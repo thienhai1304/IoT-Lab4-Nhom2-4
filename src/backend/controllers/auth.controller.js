@@ -33,6 +33,7 @@ exports.signin = (req, res) => {
     const { email, password } = req.body;
 
     if (!(email && password)) {
+        console.log("error sign in")
         return res.status(400).json({message: "All input is required"});
     }
 
@@ -41,7 +42,9 @@ exports.signin = (req, res) => {
     })
     .then(user => {
         if(!user) {
-            return res.status(401).send({
+            console.log("error sign in")
+
+            return res.status(400).send({
                 accessToken: null,
                 message: "Invalid credentials!"
             });
@@ -52,8 +55,10 @@ exports.signin = (req, res) => {
             user.password
         );
 
-        if (!(passwordIsValid)) {
-            return res.status(401).send({
+        if (!passwordIsValid) {
+            console.log("error sign in")
+
+            return res.status(400).send({
                 accessToken: null,
                 message: "Invalid credentials!"
             });
@@ -68,6 +73,7 @@ exports.signin = (req, res) => {
         ); 
 
         user.token = token;
+        console.log(token)
 
         return res.status(200).json({
             user_id: user._id,
