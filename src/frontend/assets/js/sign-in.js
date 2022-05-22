@@ -27,7 +27,7 @@ function postToken(token) {
     fetch(URL + '/get/dashboard', {
         method: 'GET',
         headers: {
-            "Access-Control-Allow-Headers": "X-Requested-With",
+            'Access-Control-Allow-Headers': 'X-Requested-With',
             'Access-Control-Allow-Origin' : '*',
             'Content-Type': 'application/json',
             'x-access-token': token

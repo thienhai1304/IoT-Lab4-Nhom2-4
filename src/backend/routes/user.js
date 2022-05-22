@@ -8,11 +8,16 @@ module.exports = function(app) {
           "x-access-token, Origin, Content-Type, Accept"
         );
         next();
-      });
+    });
     
     app.get(
-    "/get/dashboard",
-    [authJwt.verifyToken],
-    controller.userAuth
-    );
+        "/get/dashboard",
+        [authJwt.verifyToken],
+        controller.userAuth
+        )
+
+    app.get(
+        "/get/data/temp",
+        controller.getDataTemp
+        )
 }
