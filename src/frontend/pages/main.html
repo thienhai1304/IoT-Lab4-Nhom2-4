@@ -6,6 +6,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+
+  <style>
+    .toggle {
+  --width: 50px;
+  --height: calc(var(--width) / 2);
+  --border-radius: calc(var(--height) / 2);
+
+  display: inline-block;
+  cursor: pointer;
+}
+
+.toggle__input {
+  display: none;
+}
+
+.toggle__fill {
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--border-radius);
+  background: #dddddd;
+  transition: background 0.2s;
+}
+
+.toggle__input:checked ~ .toggle__fill {
+  background: #009578;
+}
+
+.toggle__fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--height);
+  width: var(--height);
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  border-radius: var(--border-radius);
+  transition: transform 0.2s;
+}
+
+.toggle__input:checked ~ .toggle__fill::after {
+  transform: translateX(var(--height));
+}
+  </style>
+  
   <title>
     Material Dashboard 2 by Creative Tim
   </title>
@@ -68,6 +114,14 @@
         </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="../pages/profile.html">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">person</i>
+            </div>
+            <span class="nav-link-text ms-1">Profile</span>
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white " href="../pages/sign-in.html">
@@ -205,11 +259,72 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    <div style="height: 300px;">
-      <div class="card-header p-3 pt-2" style="height: 290px; background-color: #E4316F ; width: 96%;border-radius: 10px;box-shadow: 2px 2px 2px 1px gray;margin:auto">
 
-      </div>
-    </div>
+    <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="header">
+                                    <h2 class="title" style="font-weight: bold; color: white; background-color: blue; padding: 10px;">Điều khiển thiết bị</h2>
+                                </div>
+                                <div class="content">
+                                    <form>
+                                        <div class="row" style="display: flex">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <h4 style="font-weight: bold; color: blue; padding-left: 20px;">Nhiệt độ</h4>
+                                                    <h1 id="temp_txt" style="padding-left: 20px; height: fit-content; width: fit-content;">30</h1>
+                                                    <img src="https://image.shutterstock.com/image-vector/heat-temperature-icon-thermometer-vector-600w-1165453699.jpg" width="50" height="50">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <h4 style="font-weight: bold; color: blue">Độ ẩm</h4>
+                                                    <h1 id="humid_txt" style="height: fit-content; width: fit-content;">30</h1>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <div class="form-group">
+                                                    <h4 style="font-weight: bold; color: blue">Ánh sáng</h4>
+                                                    <h1 id="lux_txt" style="height: fit-content; width: fit-content;">30</h1>
+                                              </div>
+                                          </div>
+                                        </div>
+
+                                        <div>
+                                          <h4 style="font-weight: bold; color: blue; padding-left: 10px">Các thiết bị</h4>
+                                        </div>
+    
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <h4 style="font-weight: bold; color: blue; padding-left: 10px">Led 1</h4>
+                                                    <label class="toggle" for="myToggle" style="padding-left: 10px">
+                                                        <input class="toggle__input" name="" type="checkbox" id="myToggle">
+                                                        <div class="toggle__fill"></div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <h4 style="font-weight: bold; color: blue;">Led 2</h4>
+                                                    <label class="toggle" for="myToggle2">
+                                                        <input class="toggle__input" name="" type="checkbox" id="myToggle2">
+                                                        <div class="toggle__fill"></div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>                                                                                                
+                                    </form>
+                                </div>
+                            </div>
+                        </div>                   
+                    </div>
+                </div>
+            </div>
+
+
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -218,7 +333,7 @@
     <div class="card shadow-lg">
       <div class="card-header pb-0 pt-3">
         <div class="float-start">
-          <h5 class="mt-3 mb-0">Setting</h5>
+          <h5 class="mt-3 mb-0">Material UI Configurator</h5>
           <p>See our dashboard options.</p>
         </div>
         <div class="float-end mt-4">
@@ -270,6 +385,18 @@
           </div>
         </div>
         <hr class="horizontal dark my-sm-4">
+        <a class="btn bg-gradient-info w-100" href="https://www.creative-tim.com/product/material-dashboard">Free Download</a>
+        <a class="btn btn-outline-dark w-100" href="https://www.creative-tim.com/learning-lab/bootstrap/overview/material-dashboard">View documentation</a>
+        <div class="w-100 text-center">
+          <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
+          <h6 class="mt-3">Thank you for sharing!</h6>
+          <a href="https://twitter.com/intent/tweet?text=Check%20Material%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -291,6 +418,8 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.0.2"></script>
+
+  
 </body>
 
 </html>

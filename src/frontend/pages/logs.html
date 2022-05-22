@@ -34,6 +34,9 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
+  <!-- Auto refresh -->
+  <title>Page Title</title>
+  <meta http-equiv="refresh" content="10">
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -84,6 +87,14 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
+          <a class="nav-link text-white " href="../pages/profile.html">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">person</i>
+            </div>
+            <span class="nav-link-text ms-1">Profile</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link text-white " href="../pages/sign-in.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">login</i>
@@ -111,8 +122,8 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Logs</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Logs</h6>
         </nav>
+        
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="input-group input-group-outline">
@@ -219,13 +230,44 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    <div style="height: 300px;">
-      <div class="card-header p-3 pt-2" style="height: 290px; background-color: #E4316F ; width: 96%;border-radius: 10px;box-shadow: 2px 2px 2px  1px gray;margin:auto">
 
-      </div>
+    <div class="topnav">  
+      <a class="active" style="padding-left: 65px; font-size: 15px;"><strong>Logs></a>
+      <input type="text" placeholder="Search...">
+      <button type="submit"><i class="fa fa-search"></i></button>
+      <button type="button" class="btn" style="font-size: 15px">
+        <span class="glyphicon glyphicon-export"></span>
+        <img src="https://pic.onlinewebfonts.com/svg/img_360768.png" width="20" height="20"></a>Export
+      </button>
     </div>
-    
-    
+
+
+    <!-- Creat table -->
+<div style="background-color: white; border-radius: 10px; width: 90%; margin: auto; height: auto;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID thiết bị</th>
+        <th scope="col">Địa chỉ IP</th>
+        <th scope="col">Tên thiết bị</th>
+        <th scope="col">Cảm biến</th>
+        <th scope="col">Giá trị</th>
+        <th scope="col">Thời gian</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>HHH</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -234,7 +276,7 @@
     <div class="card shadow-lg">
       <div class="card-header pb-0 pt-3">
         <div class="float-start">
-          <h5 class="mt-3 mb-0">Setting</h5>
+          <h5 class="mt-3 mb-0">Material UI Configurator</h5>
           <p>See our dashboard options.</p>
         </div>
         <div class="float-end mt-4">
@@ -286,7 +328,18 @@
           </div>
         </div>
         <hr class="horizontal dark my-sm-4">
-        
+        <a class="btn bg-gradient-info w-100" href="https://www.creative-tim.com/product/material-dashboard">Free Download</a>
+        <a class="btn btn-outline-dark w-100" href="https://www.creative-tim.com/learning-lab/bootstrap/overview/material-dashboard">View documentation</a>
+        <div class="w-100 text-center">
+          <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
+          <h6 class="mt-3">Thank you for sharing!</h6>
+          <a href="https://twitter.com/intent/tweet?text=Check%20Material%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
+          </a>
+        </div>
       </div>
     </div>
   </div>
