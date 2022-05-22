@@ -5,6 +5,11 @@ var btn_gotodb = document.getElementById('btn_gotodb')
 var error = document.getElementById('error')
 
 var URL = 'http://localhost:5500'
+var token = localStorage.getItem("token")
+
+if (token) {
+    postToken(token)
+}
 
 btn_signin.onclick = (event) => {
     event.preventDefault()
@@ -14,15 +19,38 @@ btn_signin.onclick = (event) => {
         event.preventDefault()
     }
     else {
-        postData(data)
+        postDataSignIn(data)
     }
 }
 
-function postData(data) {
+function postToken(token) {
+    fetch(URL + '/get/dashboard', {
+        method: 'GET',
+        headers: {
+            "Access-Control-Allow-Headers": "X-Requested-With",
+            'Access-Control-Allow-Origin' : '*',
+            'Content-Type': 'application/json',
+            'x-access-token': token
+        },
+    })
+    .then(res => {
+        if (res.ok) {
+            window.open('./dashboard.html', '_top')
+        }
+        else {
+            localStorage.clear()
+        }
+    })
+    .catch(e => {
+        console.log(e)
+    })
+}
+
+function postDataSignIn(data) {
     fetch(URL + '/api/auth/signin', {
         method: 'POST',
         headers: {
-            "Access-Control-Allow-Headers": "X-Requested-With",
+            'Access-Control-Allow-Headers': 'X-Requested-With',
             'Access-Control-Allow-Origin' : '*',
             'Content-Type': 'application/json',
         },
@@ -30,13 +58,23 @@ function postData(data) {
     })
     .then(res => {
         if(res.clone().ok) {
+            error.style.display = 'none'
             btn_gotodb.style.display = "inline-block"
-        }
-        if(res.clone().status == 400)
             return res.json()
+        }
+        else {
+            return res.json()
+        }
     })
     .then(data => {
-        error.innerHTML= data.message
+        if(data.token) {
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("id", data.user_id);
+            console.log(localStorage.getItem("token"))
+        }
+        else {
+            error.innerHTML= data.message
+        }
     })
     .catch(e => {
         console.log(e)

@@ -11,8 +11,8 @@ module.exports = function(app) {
       });
     
     app.get(
-    "/trang-chu",
+    "/get/dashboard",
     [authJwt.verifyToken],
-    controller.userBoard
+    controller.userAuth
     );
 }

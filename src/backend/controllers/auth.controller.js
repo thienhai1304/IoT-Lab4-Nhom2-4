@@ -45,7 +45,7 @@ exports.signin = (req, res) => {
             console.log("error sign in")
 
             return res.status(400).send({
-                accessToken: null,
+                token: null,
                 message: "Invalid credentials!"
             });
         }
@@ -59,7 +59,7 @@ exports.signin = (req, res) => {
             console.log("error sign in")
 
             return res.status(400).send({
-                accessToken: null,
+                token: null,
                 message: "Invalid credentials!"
             });
         }
@@ -75,7 +75,7 @@ exports.signin = (req, res) => {
         user.token = token;
         console.log(token)
 
-        return res.status(200).json({
+        return res.status(200).send({
             user_id: user._id,
             email,
             token,
@@ -84,6 +84,5 @@ exports.signin = (req, res) => {
     })
     .catch(error => {
         console.log(error);
-        res.status(400).json(error);
     })
 }
