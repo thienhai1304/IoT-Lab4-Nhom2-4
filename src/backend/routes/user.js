@@ -20,4 +20,14 @@ module.exports = function(app) {
         "/get/data/temp",
         controller.getDataTemp
         )
+    
+    app.get(
+        "/get/data/humid",
+        controller.getDataHumid
+    )
+
+    app.get(
+        "/get/data/lux",
+        controller.getDataLux
+        )
 }
