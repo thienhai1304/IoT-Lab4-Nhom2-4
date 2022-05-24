@@ -2,6 +2,7 @@ var URL = 'http://localhost:5500'
 
 const ctx_bar = document.getElementById("chart_bar").getContext('2d');
 const ctx_line = document.getElementById("chart_line").getContext('2d');
+const ctx_pie = document.getElementById("pie_chart").getContext('2d');
 
 var myChart_bar 
 var myChart_line
@@ -215,3 +216,19 @@ function drawChartLine() {
         },
     });
 }
+//
+
+
+const myChart_pie = new Chart(ctx_pie, {
+type: 'pie',
+data: {
+    labels: ["Temperature", "Humidity", "Light"],
+    datasets: [{
+        backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+        borderColor: 'rgb(47, 128, 237)',
+        data: [100, 200, 360],
+    },
+    
+]
+},
+});

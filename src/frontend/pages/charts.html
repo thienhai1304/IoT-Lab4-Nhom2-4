@@ -208,25 +208,36 @@
     <div class="card-header p-3 pt-2" style="height: 290px; background-color: #E4316F ; width: 96%;border-radius: 10px;box-shadow: 2px 2px 2px 1px gray;margin:auto">
 
     </div>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-    <div style = "height: 750px;display: flex;margin-top: -360px;">
-      <div class="card chart-container" 
-        style=" width: 50%;
-        height: 50%;
-        margin: auto;
-        margin-left: 52px;
-        box-shadow: 2px 2px 2px gray;">
+    <div style = "height: 750px;margin-top: -160px;">
+      <div style="display:flex">
+        <div class="card chart-container" 
+          style=" width: 50%;
+          height: 50%;
+          margin: auto;
+          margin-left: 52px;
+          box-shadow: 2px 2px 2px gray;">
           <canvas id="chart_line"></canvas>
+        </div>
+        <div class="card chart-container" 
+          style=" width: 40%;
+          height: 40%;
+          margin: auto;
+          margin-right: 48px;
+          box-shadow: 2px 2px 2px gray;">
+          <canvas id="chart_bar"></canvas>
+        </div>
       </div>
+      
       <div class="card chart-container" 
         style=" width: 40%;
         height: 40%;
         margin: auto;
-        margin-right: 48px;
+        margin-top: 40px;
         box-shadow: 2px 2px 2px gray;">
-          <canvas id="chart_bar"></canvas>
+          <canvas id="pie_chart"></canvas>
       </div>
-      
     </div>
 
   </main>
