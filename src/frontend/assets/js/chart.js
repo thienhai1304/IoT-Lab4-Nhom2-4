@@ -2,10 +2,11 @@ var URL = 'http://localhost:5500'
 
 const ctx_bar = document.getElementById("chart_bar").getContext('2d');
 const ctx_line = document.getElementById("chart_line").getContext('2d');
-const ctx_pie = document.getElementById("pie_chart").getContext('2d');
+const ctx_pie = document.getElementById("chart_pie").getContext('2d');
 
 var myChart_bar 
 var myChart_line
+var myChart_pie
 
 var dataTemp
 var dataHumid
@@ -69,6 +70,12 @@ function getDataLux() {
     })
 }
 
+function getTotalData() {
+    getDataTemp()
+    getDataHumid()
+    getDataLux()
+}
+
 // ------------- BAR CHART ------------- 
 
 // First draw
@@ -91,7 +98,7 @@ function updateChartBar() {
 
 function addDataBar(chart, label) {
     chart.data.labels[0] = label;
-    console.log(`${dataTemp} ${dataHumid} ${dataLight}`)
+    //console.log(`${dataTemp} ${dataHumid} ${dataLight}`)
     chart.data.datasets[0].data[0] = dataTemp
     chart.data.datasets[1].data[0] = dataHumid
     chart.data.datasets[2].data[0] = dataLight
@@ -142,14 +149,6 @@ drawChartLine()
 // Update chart
 setInterval(updateChartLine, 1000)
 function updateChartLine() {
-    /* var date = new Date()
-    var hour = date.getHours()
-    var minute = date.getMinutes()
-    var second = date.getSeconds()
-    
-    labelTimeline = `${hour}:${minute}:${second}` */
-
-    //getTotalData()
     addDataLine(myChart_line, labelTimeline)
 
     if (myChart_line.data.labels.length > 10) {
@@ -159,7 +158,7 @@ function updateChartLine() {
 
 function addDataLine(chart, label) {
     chart.data.labels.push(label);
-    console.log(`${dataTemp} ${dataHumid} ${dataLight}`)
+    //console.log(`${dataTemp} ${dataHumid} ${dataLight}`)
     chart.data.datasets[0].data.push(dataTemp)
     chart.data.datasets[1].data.push(dataHumid)
     chart.data.datasets[2].data.push(dataLight)
@@ -172,12 +171,6 @@ function removeData(chart) {
         dataset.data.shift();
     });
     chart.update();
-}
-
-function getTotalData() {
-    getDataTemp()
-    getDataHumid()
-    getDataLux()
 }
 
 function drawChartLine() {
@@ -216,19 +209,37 @@ function drawChartLine() {
         },
     });
 }
-//
 
+// ------------- PIE CHART -------------
+// First draw
+drawChartPie()
 
-const myChart_pie = new Chart(ctx_pie, {
-type: 'pie',
-data: {
-    labels: ["Temperature", "Humidity", "Light"],
-    datasets: [{
-        backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
-        borderColor: 'rgb(47, 128, 237)',
-        data: [100, 200, 360],
-    },
-    
-]
-},
-});
+// Update chart
+setInterval(updateChartPie, 1000)
+
+function updateChartPie() {
+    addDataPie(myChart_pie)
+
+}
+
+function addDataPie(chart) {
+    console.log(`${dataTemp} ${dataHumid} ${dataLight}`)
+    chart.data.datasets[0].data[0] = dataTemp
+    chart.data.datasets[0].data[1] = dataHumid
+    chart.data.datasets[0].data[2] = dataLight
+    chart.update();
+}
+
+function drawChartPie() {
+    myChart_pie = new Chart(ctx_pie, {
+        type: 'pie',
+        data: {
+            labels: ["Temperature", "Humidity", "Light"],
+            datasets: [{
+                backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+                borderColor: 'rgb(47, 128, 237)',
+                data: [],
+            }],
+        },
+        });
+}
