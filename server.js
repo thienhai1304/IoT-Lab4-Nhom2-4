@@ -1,5 +1,6 @@
 require('dotenv/config')
 require('./src/backend/config/database').connect()
+require('./src/backend/websocket/socket').create()
 
 const express = require('express')
 const app = express()
@@ -53,6 +54,7 @@ client.on("message", (topic, message) => {
 
     InsertData(device, value, type)    
 });
+
 // Server Listening
 app.listen(port, () => {
     console.log(`Server is running on ${port}`)
