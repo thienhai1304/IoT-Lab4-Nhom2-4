@@ -17,7 +17,7 @@ var labelTimeline
 // ------------- WebSocket -------------
 ws.addEventListener("open", () =>{
     console.log("We are connected");
-    ws.send("Hello server !!!");
+    ws.send("Hello server, I'm chart page !!!");
   });
    
 ws.addEventListener('close', () => {

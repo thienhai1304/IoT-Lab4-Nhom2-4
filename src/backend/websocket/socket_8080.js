@@ -42,7 +42,7 @@ function getTemp() {
         {value: 1, _id: 0}).sort({time: '-1'})
     .then(data => {
         dataTemp = data.value
-        console.log(`temp: ${dataTemp}`)
+        //console.log(`temp: ${dataTemp}`)
     })
     .catch(e => {
         console.log(e)
@@ -55,7 +55,7 @@ function getHumid() {
         {value: 1, _id: 0}).sort({time: '-1'})
     .then(data => {
         dataHumid = data.value
-        console.log(`humid: ${dataHumid}`)
+        //console.log(`humid: ${dataHumid}`)
     })
     .catch(e => {
         console.log(e)
@@ -68,7 +68,7 @@ function getLight() {
         {value: 1, _id: 0}).sort({time: '-1'})
     .then(data => {
         dataLight = data.value
-        console.log(`light: ${dataLight}`)
+        //console.log(`light: ${dataLight}`)
     })
     .catch(e => {
         console.log(e)
