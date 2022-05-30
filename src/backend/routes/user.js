@@ -14,12 +14,12 @@ module.exports = function(app) {
         "/get/dashboard",
         [authJwt.verifyToken],
         controller.userAuth
-        )
+    )
 
     app.get(
         "/get/data/temp",
         controller.getDataTemp
-        )
+    )
     
     app.get(
         "/get/data/humid",
@@ -29,5 +29,10 @@ module.exports = function(app) {
     app.get(
         "/get/data/lux",
         controller.getDataLux
-        )
+    )
+    
+    app.get(
+        "/get/log",
+        controller.getLog
+    )
 }

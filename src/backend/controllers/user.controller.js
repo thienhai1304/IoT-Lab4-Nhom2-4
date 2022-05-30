@@ -42,3 +42,14 @@ exports.getDataLux = (req, res) => {
         console.log(e)
     })
 }
+
+exports.getLog = (req, res) => {
+    Device.findOne({__v: 0}).sort({time: -1})
+    .then(data => {
+        console.log(data)
+        return res.send(data)
+    })
+    .catch(e => {
+        console.log(e)
+    })
+}
