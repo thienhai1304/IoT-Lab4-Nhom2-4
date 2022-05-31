@@ -35,7 +35,7 @@ function getLog(client) {
     Device.find({},{__v: 0}).sort({time: -1}).limit(3)
     .then(data => {
         data.forEach(current => {
-            time = `${current.time.getDate()}/${current.time.getMonth()}/${current.time.getYear()} ${current.time.getHours()}:${current.time.getMinutes()}:${current.time.getSeconds()}`
+            time = `${current.time.getDate()}/${current.time.getMonth() + 1}/${current.time.getFullYear()} ${current.time.getHours()}:${current.time.getMinutes()}:${current.time.getSeconds()}`
             log = 
             `<tr>
                 <td>${current._id}</td>

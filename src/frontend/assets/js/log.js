@@ -15,7 +15,6 @@ ws.addEventListener('close', () => {
 ws.addEventListener('message', function (event) {
     console.log(event.data)
     listLogs.unshift(event.data)
-    console.log(listLogs.join(''))
     logs.innerHTML = listLogs.join('')
 })
 
