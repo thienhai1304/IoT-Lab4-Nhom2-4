@@ -65,7 +65,7 @@ client.on("message", (topic, message) => {
     if (typeof data[1] == 'string') {
         data[1] = parseInt(data[1])
     }
-
+    
     InsertData(device, data[1], data[0], type, board)    
 });
 
@@ -93,4 +93,3 @@ function InsertData(device, value, IP, type, board = 'Wemos D1') {
         console.log('fail to insert: ' + e)
     })
 }
-

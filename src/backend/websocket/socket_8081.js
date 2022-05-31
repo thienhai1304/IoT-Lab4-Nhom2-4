@@ -10,16 +10,16 @@ exports.create = () => {
         
         // sending message
         ws.on("message", data => {
-            console.log(`Wemos insert data`)
-            wss.clients.forEach(client => {
-                if (client !== ws && client.readyState === ws.OPEN) {
-
-                    client.send(log);
-                }
-            });
+            console.log(`${data.toString()}`)
+            if (data.toString() == 'Insert') {
+                wss.clients.forEach(client => {
+                    if (client !== ws && client.readyState === ws.OPEN) {
+                        getLog(client)
+                    }
+                });
+            }
         });
     
-        // handling what to do when clients disconnects from server
         ws.on("close", () => {
             console.log("==> the client has disconnected");
         });
@@ -31,11 +31,24 @@ exports.create = () => {
     });
 }
 
-function getLog() {
-    Device.findOne({__v: 0}).sort({time: -1})
+function getLog(client) {
+    Device.find({},{__v: 0}).sort({time: -1}).limit(3)
     .then(data => {
-        log = data
-        console.log(log)
+        data.forEach(current => {
+            time = `${current.time.getDate()}/${current.time.getMonth()}/${current.time.getYear()} ${current.time.getHours()}:${current.time.getMinutes()}:${current.time.getSeconds()}`
+            log = 
+            `<tr>
+                <td>${current._id}</td>
+                <td>${current.IPaddress}</td>
+                <td>${current.board}</td>
+                <td>${current.device}</td>
+                <td>${current.value}</td>
+                <td>${time}</td>
+            </tr>
+            `
+
+            client.send(log);
+        })
     })
     .catch(e => {
         console.log(e)
