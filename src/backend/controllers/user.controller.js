@@ -1,4 +1,5 @@
-const Device = require('../model/device')
+const Device = require('../model/device');
+const user = require('../model/user');
 
 exports.userAuth = (req, res) => {
     res.status(200).send({name: 'userboard'});
@@ -48,6 +49,18 @@ exports.getLog = (req, res) => {
     .then(data => {
         console.log(data)
         return res.send(data)
+    })
+    .catch(e => {
+        console.log(e)
+    })
+}
+
+exports.getUsername = (req, res) => {
+    const {id} = req.body
+    user.findOne({_id: id})
+    .then(data => {
+        console.log(data)
+        return res.status(200).send(data)
     })
     .catch(e => {
         console.log(e)

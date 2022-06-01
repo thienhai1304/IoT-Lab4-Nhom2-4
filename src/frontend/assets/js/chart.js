@@ -3,6 +3,13 @@ var URL = 'http://localhost:5500'
 const ctx_bar = document.getElementById("chart_bar").getContext('2d');
 const ctx_line = document.getElementById("chart_line").getContext('2d');
 const ctx_pie = document.getElementById("chart_pie").getContext('2d');
+
+const txt_username = document.getElementById('txt_username')
+
+const token = localStorage.getItem("token")
+const id_user = localStorage.getItem("id")
+console.log(id_user)
+
 const ws = new WebSocket("ws://localhost:8080");
 
 var myChart_bar 
@@ -14,10 +21,35 @@ var dataHumid
 var dataLight
 var labelTimeline
 
+// ------------- Username -------------
+function getUsername() {
+    fetch(URL + '/api/post/name', {
+        method: 'POST',
+        headers: {
+            'Access-Control-Allow-Headers': 'X-Requested-With',
+            'Access-Control-Allow-Origin' : '*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id: id_user}),
+    })
+    .then(res => {
+        return res.json()
+    })
+    .then(data => {
+        console.log(data)
+        txt_username.innerHTML = data.username
+    })
+    .catch(e => {
+        console.log(e)
+    })
+}
+
+getUsername()
+
 // ------------- WebSocket -------------
 ws.addEventListener("open", () =>{
     console.log("We are connected");
-    ws.send("Hello server, I'm chart page !!!");
+    ws.send("Hello server 8080, I'm chart page !!!");
   });
    
 ws.addEventListener('close', () => {
@@ -37,7 +69,7 @@ ws.addEventListener('message', function (event) {
 drawChartBar()
 
 // Update chart
-setInterval(updateChartBar, 1000)
+setInterval(updateChartBar, 3500)
 
 function updateChartBar() {
     var date = new Date()
@@ -95,12 +127,11 @@ function drawChartBar() {
 }
 
 // ------------- LINE CHART -------------
-
 // First draw
 drawChartLine()
 
 // Update chart
-setInterval(updateChartLine, 1000)
+setInterval(updateChartLine, 3500)
 function updateChartLine() {
     addDataLine(myChart_line, labelTimeline)
 
@@ -167,7 +198,7 @@ function drawChartLine() {
 drawChartPie()
 
 // Update chart
-setInterval(updateChartPie, 1000)
+setInterval(updateChartPie, 3500)
 
 function updateChartPie() {
     addDataPie(myChart_pie)

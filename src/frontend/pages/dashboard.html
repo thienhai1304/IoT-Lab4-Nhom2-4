@@ -97,7 +97,7 @@
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+                <span class="d-sm-inline d-none" id="txt_username"></span>
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -223,7 +223,7 @@
           style="max-height: 100px;margin-right: 500px;">
           <p class="group_name" style="margin-top: -100px; color: blue;font-size: 30px;font-weight: bold;" >Wemos-D1</p>
           <div>
-            <p id="current-time" style="color: green;font-weight: bold;font-size: large;">
+            <p id="current_time" style="color: #F29339;font-weight: bold;font-size: large;">
               Wemos-D1
             </p>
           </div>
@@ -236,7 +236,7 @@
           style="max-height: 100px;margin-right: 280px;">
           <p class="group_name" style="margin-top: -100px; color: blue;font-size: 30px;font-weight: bold;" >Raspberry Pi</p>
           <div>
-            <p id="current-time_2" style="color: green;font-weight: bold;font-size: large;">
+            <p id="current_time_2" style="color: #F29339;font-weight: bold;font-size: large;">
               Raspberry Pi
             </p>
           </div>
@@ -256,7 +256,7 @@
       var curYear = curDate.getFullYear();
    
       // Gán vào thẻ HTML
-      document.getElementById('current-time').innerHTML = "● " + curDay + "/" + curMonth + "/" + curYear;
+      document.getElementById('current_time').innerHTML = "● " + curDay + "/" + curMonth + "/" + curYear;
   </script>
   <script>
     var curDate = new Date();
@@ -271,7 +271,7 @@
     var curYear = curDate.getFullYear();
  
     // Gán vào thẻ HTML
-    document.getElementById('current-time_2').innerHTML = "● " + curDay + "/" + curMonth + "/" + curYear;
+    document.getElementById('current_time_2').innerHTML = "● " + curDay + "/" + curMonth + "/" + curYear;
 </script>
   </main>
   <div class="fixed-plugin">

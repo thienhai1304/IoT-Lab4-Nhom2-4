@@ -10,7 +10,7 @@ exports.create = () => {
         
         // sending message
         ws.on("message", data => {
-            console.log(`${data.toString()}`)
+            //console.log(`${data.toString()}`)
             if (data.toString() == 'Insert') {
                 wss.clients.forEach(client => {
                     if (client !== ws && client.readyState === ws.OPEN) {

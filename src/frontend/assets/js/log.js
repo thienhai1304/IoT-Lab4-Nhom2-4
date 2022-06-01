@@ -2,7 +2,40 @@ const ws = new WebSocket("ws://localhost:8081")
 const logs = document.getElementById('logs')
 const btn_export = document.getElementById('btn_export')
 
+const txt_username = document.getElementById('txt_username')
+
+const token = localStorage.getItem("token")
+const id_user = localStorage.getItem("id")
+console.log(id_user)
+
+var URL = 'http://localhost:5500'
+
 var listLogs = []
+
+getUsername()
+
+function getUsername() {
+    fetch(URL + '/api/post/name', {
+        method: 'POST',
+        headers: {
+            'Access-Control-Allow-Headers': 'X-Requested-With',
+            'Access-Control-Allow-Origin' : '*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id: id_user}),
+    })
+    .then(res => {
+        return res.json()
+    })
+    .then(data => {
+        console.log(data)
+        txt_username.innerHTML = data.username
+    })
+    .catch(e => {
+        console.log(e)
+    })
+}
+
 ws.addEventListener("open", () =>{
     console.log("We are connected");
     ws.send("Hello server 8081, I'm log page!!!");

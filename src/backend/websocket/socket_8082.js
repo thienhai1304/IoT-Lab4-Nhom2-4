@@ -18,12 +18,6 @@ client.on("connect", () => {
     client.subscribe([topic_status_led1, topic_status_led2]);
 });
 
-client.on("message", (topic, message) => {
-    var data = message.toString()
-    
-    console.log(data)
-})
-
 exports.create = () => {
     wss.on('connection', ws => {
         console.log("New client connected");
@@ -35,6 +29,23 @@ exports.create = () => {
         ws.onerror = function () {
             console.log("Some Error occurred !!!")
         }
+
+        client.on("message", (topic, message) => {
+            var data = message.toString().split(' ')
+            if (topic == topic_status_led1) {
+                if (parseInt(data[1]) == 1) {
+                    ws.send('led1')
+                    console.log(`status 1: ${parseInt(data[1])}`)
+                }
+            }
+            else if (topic == topic_status_led2) {
+                if (parseInt(data[1]) == 1) {
+                    ws.send('led2')
+                    console.log(`status 2: ${parseInt(data[1])}`)
+                }
+            }
+            
+        })
 
         ws.on("message", data => {            
             var dataSplit = data.toString().split(' ')
@@ -53,4 +64,3 @@ exports.create = () => {
         });
     })
 }
-

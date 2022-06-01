@@ -3,6 +3,7 @@ require('./src/backend/config/database').connect()
 require('./src/backend/websocket/socket_8080').create()
 require('./src/backend/websocket/socket_8081').create()
 require('./src/backend/websocket/socket_8082').create()
+require('./src/backend/websocket/socket_8083').create()
 
 const express = require('express')
 const app = express()
@@ -13,6 +14,7 @@ const Device = require('./src/backend/model/device')
 
 const {API_PORT} = process.env
 const port = API_PORT || 5500
+
 const {BROKER} = process.env
 const client = mqtt.connect(BROKER);
 
@@ -22,7 +24,7 @@ var corsOptions = {
 }
 
 app.use(cors(corsOptions));
-app.use(express.json())
+app.use(express.json()) 
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
@@ -66,7 +68,9 @@ client.on("message", (topic, message) => {
         data[1] = parseInt(data[1])
     }
     
-    InsertData(device, data[1], data[0], type, board)    
+    if (data[1] !== NaN) {
+        InsertData(device, data[1], data[0], type, board)  
+    }  
 });
 
 // Server Listening
