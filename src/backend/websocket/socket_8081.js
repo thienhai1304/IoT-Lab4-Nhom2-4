@@ -10,7 +10,7 @@ exports.create = () => {
         
         // sending message
         ws.on("message", data => {
-            //console.log(`${data.toString()}`)
+            console.log(`${data.toString()}`)
             if (data.toString() == 'Insert') {
                 wss.clients.forEach(client => {
                     if (client !== ws && client.readyState === ws.OPEN) {
@@ -32,7 +32,7 @@ exports.create = () => {
 }
 
 function getLog(client) {
-    Device.find({},{__v: 0}).sort({time: -1}).limit(3)
+    Device.find({},{__v: 0}).sort({time: -1}).limit(5)
     .then(data => {
         data.forEach(current => {
             time = `${current.time.getDate()}/${current.time.getMonth() + 1}/${current.time.getFullYear()} ${current.time.getHours()}:${current.time.getMinutes()}:${current.time.getSeconds()}`

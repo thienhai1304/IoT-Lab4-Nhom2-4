@@ -1,4 +1,3 @@
-const ws = new WebSocket("ws://localhost:8081")
 const logs = document.getElementById('logs')
 const btn_export = document.getElementById('btn_export')
 
@@ -8,14 +7,13 @@ const token = localStorage.getItem("token")
 const id_user = localStorage.getItem("id")
 console.log(id_user)
 
-var URL = 'http://localhost:5500'
+var URL_2 = 'http://localhost:5500'
+const ws = new WebSocket("ws://localhost:8081")
 
 var listLogs = []
 
-getUsername()
-
 function getUsername() {
-    fetch(URL + '/api/post/name', {
+    fetch(URL_2 + '/api/post/name', {
         method: 'POST',
         headers: {
             'Access-Control-Allow-Headers': 'X-Requested-With',
@@ -38,15 +36,20 @@ function getUsername() {
 
 ws.addEventListener("open", () =>{
     console.log("We are connected");
+    //getUsername()
     ws.send("Hello server 8081, I'm log page!!!");
   });
-   
+
+ws.addEventListener('error', function (event) {
+    console.log('WebSocket error: ', event);
+});
+
 ws.addEventListener('close', () => {
     console.log('The connection has been closed !!!');
 })
 
 ws.addEventListener('message', function (event) {
-    console.log(event.data)
+    //console.log(event.data)
     listLogs.unshift(event.data)
     logs.innerHTML = listLogs.join('')
 })

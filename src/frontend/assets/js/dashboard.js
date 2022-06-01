@@ -7,8 +7,7 @@ const id_user = localStorage.getItem("id")
 console.log(id_user)
 
 var URL = 'http://localhost:5500'
-
-getUsername()
+const ws = new WebSocket("ws://localhost:8083");
 
 function getUsername() {
     fetch(URL + '/api/post/name', {
@@ -32,11 +31,9 @@ function getUsername() {
     })
 }
 
-
-
-const ws = new WebSocket("ws://localhost:8083");
 ws.addEventListener("open", () =>{
   console.log("We are connected");
+  getUsername()
   ws.send("Hello server 8083, I'm dashboard page!!!");
 });
  

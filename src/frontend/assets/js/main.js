@@ -7,17 +7,15 @@ var toggle_led_2 = document.getElementById('myToggle2')
 
 const txt_username = document.getElementById('txt_username')
 
-const ws = new WebSocket("ws://localhost:8080");
-const ws_2 = new WebSocket("ws://localhost:8082");
-
 const token = localStorage.getItem("token")
 const id_user = localStorage.getItem("id")
 console.log(id_user)
 
 var URL = 'http://localhost:5500'
-
+const ws = new WebSocket("ws://localhost:8080");
+const ws_2 = new WebSocket("ws://localhost:8082");
 // ----- Username -----
-getUsername()
+
 
 function getUsername() {
     fetch(URL + '/api/post/name', {
@@ -44,6 +42,7 @@ function getUsername() {
 // ----- Websocket -----
 ws.addEventListener("open", () =>{
     console.log("We are connected 8080");
+    getUsername()
     ws.send("Hello server 8080, I'm main page !!!");
   });
    
@@ -54,9 +53,9 @@ ws.addEventListener('close', () => {
 ws.addEventListener('message', function (event) {
     var data = event.data.split(',')
     if (parseInt(data[0])) {
-        temp_txt.innerHTML = parseInt(data[0])
-        humid_txt.innerHTML = parseInt(data[1])
-        lux_txt.innerHTML = parseInt(data[2])
+        temp_txt.innerHTML = `${data[0]}°C`
+        humid_txt.innerHTML = `${data[1]}%`
+        lux_txt.innerHTML = `${data[2]}lux`
     }
 })
 
@@ -71,8 +70,9 @@ ws_2.addEventListener('close', () => {
     console.log('The connection has been closed !!!');
 })
 
-ws.addEventListener('message', function (event) {
+ws_2.addEventListener('message', function (event) {
     var status = event.data
+    console.log(status)
     if (status == 'led1') {
         toggle_led_1.checked = true
     }
