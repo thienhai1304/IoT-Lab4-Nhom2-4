@@ -34,7 +34,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
-  <!-- Auto refresh -->
+  <link href="../assets/css/logs_style.css" rel="stylesheet"/>
   <title>Page Title</title>
 
 </head>
@@ -214,37 +214,40 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    <div class="card-header p-3 pt-2" style="height: 290px; background-color: #E4316F ; width: 96%;border-radius: 10px;box-shadow: 2px 2px 2px 1px gray;margin:auto">
-
-    </div>
-    <div class="topnav">  
-      <a class="active" style="padding-left: 65px; font-size: 15px;"><strong>Logs></a>
-      <input type="text" placeholder="Search...">
-      <button type="submit"><i class="fa fa-search"></i></button>
-      <button id="btn_export" type="button" class="btn" style="font-size: 15px">
-        <span class="glyphicon glyphicon-export"></span>
-        <img src="https://pic.onlinewebfonts.com/svg/img_360768.png" width="20" height="20"></a>Export
-      </button>
-    </div>
-
-
-    <!-- Creat table -->
-<div style="background-color: white; border-radius: 10px; width: 90%; margin: auto; height: auto;">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ID thiết bị</th>
-        <th scope="col">Địa chỉ IP</th>
-        <th scope="col">Tên thiết bị</th>
-        <th scope="col">Cảm biến</th>
-        <th scope="col">Giá trị</th>
-        <th scope="col">Thời gian</th>
-      </tr>
-    </thead>
-    <tbody id="logs">
+    
+    <div>
+        <div class="topnav">  
+          <a class="active" style="padding-left: 63px; font-size: 25px;"></a>
+          <input type="text" style="border-radius: 5px;" placeholder="Search...">
+          <button type="submit" style="border-radius: 5px;"><i class="fa fa-search"></i></button>
+          <button class="btn_export" id="btn_export">
+            <span class="glyphicon glyphicon-export"></span>
+            <div style="display: flex; height: 15px;"> 
+              <h6 class="ten" style="font-size: 23px; color: white;">Export</h6>
+            </div>
+          </button>
+        </div>
       
-    </tbody>
-  </table>
+        <!-- Creat table -->
+        <div style="background-color: white; border-top-left-radius: 10px; border-top-right-radius: 10px; width: 90%; height: auto; margin-top: 10px; margin-left: 63px;">
+      
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID thiết bị</th>
+                <th scope="col">Địa chỉ IP</th>
+                <th scope="col">Tên thiết bị</th>
+                <th scope="col">Cảm biến</th>
+                <th scope="col">Giá trị</th>
+                <th scope="col">Thời gian</th>
+              </tr>
+            </thead>
+            <tbody id="logs">
+
+            </tbody>
+          </table>
+        </div>
+    </div>
 
   </main>
   <div class="fixed-plugin">
@@ -309,7 +312,6 @@
         
       </div>
     </div>
-  </div>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
