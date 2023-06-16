@@ -13,20 +13,20 @@ We collect data from sensors every 3s and publish them by MQTT to topics. Next, 
 - INACTIVE: red
 - ACTIVE: green
 
-![Dashboard1](images\dashboard1.png)
-![Dashboard2](images\dashboard2.png)
+![Dashboard1](https://github.com/thienhai1304/IoT-Lab4-Nhom2-4/blob/main/images/dashboard1.png)
+![Dashboard2](https://github.com/thienhai1304/IoT-Lab4-Nhom2-4/blob/main/images/dashboard2.png)
 
 ## Main Page
-![info_sensors](images\info_sensors.png)
+![info_sensors](https://github.com/thienhai1304/IoT-Lab4-Nhom2-4/blob/main/images/info_sensors.png)
 
 ## Log Page
-![log](images\log.png)
+![log](https://github.com/thienhai1304/IoT-Lab4-Nhom2-4/blob/main/images/log.png)
 
 ## Chart Page
-![chart](images\chart.png)
+![chart](https://github.com/thienhai1304/IoT-Lab4-Nhom2-4/blob/main/images/chart.png)
 
 ## Sign up Page
-![signup](images\signup.png)
+![signup](https://github.com/thienhai1304/IoT-Lab4-Nhom2-4/blob/main/images/signin.png)
 
 ## Sign in Page
-![signin](images\signin.png)
+![signin](https://github.com/thienhai1304/IoT-Lab4-Nhom2-4/blob/main/images/signup.png)
